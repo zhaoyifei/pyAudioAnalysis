@@ -73,6 +73,7 @@ def readAudioFile(path):
     try:
         #if extension.lower() == '.wav':
             #[Fs, x] = wavfile.read(path)
+
         if extension.lower() == '.aif' or extension.lower() == '.aiff':
             s = aifc.open(path, 'r')
             nframes = s.getnframes()

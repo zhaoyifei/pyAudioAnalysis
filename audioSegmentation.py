@@ -197,36 +197,36 @@ def plotSegmentationResults(flagsInd, flagsIndGT, classNames, mtStep, ONLY_EVALU
         for i in range(Percentages.shape[0]):
             print classNames[i], Percentages[i], AvDurations[i]
 
-        font = {'size': 10}
-        plt.rc('font', **font)
-
-        fig = plt.figure()
-        ax1 = fig.add_subplot(211)
-        ax1.set_yticks(numpy.array(range(len(classNames))))
-        ax1.axis((0, Duration, -1, len(classNames)))
-        ax1.set_yticklabels(classNames)
-        ax1.plot(numpy.array(range(len(flagsInd))) * mtStep + mtStep / 2.0, flagsInd)
-        if flagsIndGT.shape[0] > 0:
-            ax1.plot(numpy.array(range(len(flagsIndGT))) * mtStep + mtStep / 2.0, flagsIndGT + 0.05, '--r')
-        plt.xlabel("time (seconds)")
-        if accuracy >= 0:
-            plt.title('Accuracy = {0:.1f}%'.format(100.0 * accuracy))
-
-        ax2 = fig.add_subplot(223)
-        plt.title("Classes percentage durations")
-        ax2.axis((0, len(classNames) + 1, 0, 100))
-        ax2.set_xticks(numpy.array(range(len(classNames) + 1)))
-        ax2.set_xticklabels([" "] + classNames)
-        ax2.bar(numpy.array(range(len(classNames))) + 0.5, Percentages)
-
-        ax3 = fig.add_subplot(224)
-        plt.title("Segment average duration per class")
-        ax3.axis((0, len(classNames)+1, 0, AvDurations.max()))
-        ax3.set_xticks(numpy.array(range(len(classNames) + 1)))
-        ax3.set_xticklabels([" "] + classNames)
-        ax3.bar(numpy.array(range(len(classNames))) + 0.5, AvDurations)
-        fig.tight_layout()
-        plt.show()
+        # font = {'size': 10}
+        # plt.rc('font', **font)
+        #
+        # fig = plt.figure()
+        # ax1 = fig.add_subplot(211)
+        # ax1.set_yticks(numpy.array(range(len(classNames))))
+        # ax1.axis((0, Duration, -1, len(classNames)))
+        # ax1.set_yticklabels(classNames)
+        # ax1.plot(numpy.array(range(len(flagsInd))) * mtStep + mtStep / 2.0, flagsInd)
+        # if flagsIndGT.shape[0] > 0:
+        #     ax1.plot(numpy.array(range(len(flagsIndGT))) * mtStep + mtStep / 2.0, flagsIndGT + 0.05, '--r')
+        # plt.xlabel("time (seconds)")
+        # if accuracy >= 0:
+        #     plt.title('Accuracy = {0:.1f}%'.format(100.0 * accuracy))
+        #
+        # ax2 = fig.add_subplot(223)
+        # plt.title("Classes percentage durations")
+        # ax2.axis((0, len(classNames) + 1, 0, 100))
+        # ax2.set_xticks(numpy.array(range(len(classNames) + 1)))
+        # ax2.set_xticklabels([" "] + classNames)
+        # ax2.bar(numpy.array(range(len(classNames))) + 0.5, Percentages)
+        #
+        # ax3 = fig.add_subplot(224)
+        # plt.title("Segment average duration per class")
+        # ax3.axis((0, len(classNames)+1, 0, AvDurations.max()))
+        # ax3.set_xticks(numpy.array(range(len(classNames) + 1)))
+        # ax3.set_xticklabels([" "] + classNames)
+        # ax3.bar(numpy.array(range(len(classNames))) + 0.5, AvDurations)
+        # fig.tight_layout()
+        # plt.show()
     return accuracy
 
 
@@ -697,6 +697,7 @@ def speakerDiarization(fileName, numOfSpeakers, mtSize=2.0, mtStep=0.2, stWin=0.
         - PLOT     (opt)   0 for not plotting the results 1 for plottingy
     '''
     [Fs, x] = audioBasicIO.readAudioFile(fileName)
+    print fileName
     x = audioBasicIO.stereo2mono(x)
     Duration = len(x) / Fs
 
