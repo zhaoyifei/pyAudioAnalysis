@@ -1,4 +1,4 @@
-import audioSegmentation as aS
+import audioSegmentation_noGTK as aS
 import numpy as np
 import os
 import sys
@@ -24,7 +24,7 @@ def audioSeg(audio_path):
     # for i in range(len(segs)):
     #     print classes[i], segs[i][0], segs[i][1]
     [filepath,shotname,extension] = get_filePath_fileName_fileExt(audio_path)
-    outputFile = filepath+"/"+shotname+".csv"
+    outputFile = filepath+"/"+shotname+"-audio-seg.csv"
     print outputFile
     with open(outputFile, 'w') as f:
         for i in range(len(segs)):
