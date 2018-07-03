@@ -4,7 +4,7 @@ import time
 import scipy
 import os
 import audioFeatureExtraction_noGTK as aF
-import audioTrainTest as aT
+import audioTrainTest_noGTK as aT
 import audioBasicIO
 # import matplotlib.pyplot as plt
 from scipy.spatial import distance
